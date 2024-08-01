@@ -3,23 +3,20 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipesThunk } from './store/recipes/thunk';
 import { RootState } from './store';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const recipes = useSelector((state: RootState) => state.recipes.recipes);
-  useEffect(() => {
-    dispatch(fetchRecipesThunk() as any);
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchRecipesThunk() as any);
+  // }, [])
   return (
-    <div>
-      <h1>Test Recipe</h1>
-      {recipes.map(recipe => (
-        <ul>
-          <li>{recipe.title}</li>
-        </ul>
-      ))}
-   </div>
+    <Routes>
+      <Route index element={<Home />} />
+    </Routes>
   );
-}
+};
 
 export default App;
