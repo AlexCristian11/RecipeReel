@@ -1,6 +1,8 @@
 import Header from './Header';
 import video from '../assets/videos/hero-video.mp4';
 import styled from 'styled-components';
+import RecipeList from './RecipeList';
+import Main from './Main';
 
 const Home = () => {
   return (
@@ -21,18 +23,18 @@ const Home = () => {
           </p>
         </div>
       </VideoStyle>
+      <Main />
     </HomeStyle>
   );
 };
 
 const HomeStyle = styled.div`
   position: relative;
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
 `;
 
 const VideoStyle = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
