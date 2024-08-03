@@ -16,12 +16,6 @@ const RecipeList = () => {
 };
 
 const RecipeListStyle = styled.div`
-  /* width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
