@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { PiCookingPotFill } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
 
 interface RecipeCardProps {
   id: number;
@@ -8,11 +9,17 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ id, title, image }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/recipes/${id}`);
+  };
+
   return (
     <RecipeCardStyle id={id.toString()}>
       <img src={image} alt="recipe" />
       <h3>{title}</h3>
-      <button>
+      <button onClick={handleClick}>
         Cook
         <PiCookingPotFill id="icon" />
       </button>
