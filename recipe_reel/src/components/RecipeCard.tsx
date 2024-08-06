@@ -17,20 +17,23 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ id, title, image }) => {
 
   return (
     <RecipeCardStyle id={id.toString()}>
-      <img src={image} alt="recipe" />
-      <h3>{title}</h3>
-      <button onClick={handleClick}>
-        Cook
-        <PiCookingPotFill id="icon" />
-      </button>
+      <div className="image-container">
+        <img src={image} alt="recipe" />
+        <div className="overlay">
+          <h4>{title}</h4>
+          <button onClick={handleClick}>
+            Cook
+            <PiCookingPotFill id="icon" />
+          </button>
+        </div>
+      </div>
     </RecipeCardStyle>
   );
 };
 
 const RecipeCardStyle = styled.div`
   margin: 10px;
-  max-width: 90%;
-  height: 300px;
+  max-width: 80%;
   color: #fff;
   background-color: #181717;
   border-radius: 8px;
@@ -38,37 +41,77 @@ const RecipeCardStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
   font-family: 'Roboto', sans-serif;
 
+  .image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  }
+
   img {
-    width: 90%;
-    height: 50%;
+    display: block;
+    width: 100%;
+    height: auto;
     border-radius: 8px;
   }
 
-  h3 {
-    font-size: 1em;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    z-index: 1;
+  }
+
+  h4 {
+    font-size: 0.9em;
     background: transparent;
+    margin-bottom: 30px;
+    color: #fff;
   }
 
   button {
-    color: #000;
-    background-color: #d5c514;
+    color: #fff;
+    background: transparent;
     border-radius: 5px;
     border: none;
-    width: 100%;
     height: 40px;
     font-size: 1em;
     display: flex;
     justify-content: center;
-    justify-content: space-evenly;
     align-items: center;
+    font-weight: bold;
+    justify-content: flex-end;
+    cursor: pointer;
 
     #icon {
-      color: #000;
+      color: #fff;
       background: transparent;
       font-size: 1.5em;
+      margin-left: 20px;
     }
 
     @media (min-width: 600px) {

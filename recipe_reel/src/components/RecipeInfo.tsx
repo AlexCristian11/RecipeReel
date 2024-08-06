@@ -41,6 +41,8 @@ const RecipeInfo = () => {
     },
   });
 
+  console.log(recipe.cuisine);
+
   useEffect(() => {
     const fetchAndSetRecipe = async () => {
       try {
