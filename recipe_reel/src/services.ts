@@ -50,3 +50,19 @@ export const fetchRecipeInfo = async (id: number) => {
     throw new Error(error.message);
   }
 };
+
+export const fetchRecipesByCuisine = async (cuisine: string) => {
+  try {
+    const response = await fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cuisine}`,
+    );
+    if (!response.ok) {
+      throw new Error('Failed to fetch recipe by cuisine');
+    }
+    const data = await response.json();
+
+    return data.results;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
